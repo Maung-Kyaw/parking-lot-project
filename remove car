@@ -1,0 +1,61 @@
+
+*******************************************************************************/
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define MAX_ROWS 5
+#define MAX_COLS 5
+
+struct Car{
+    int number;
+
+} ;
+
+void Remove_Car(int parking_slot[MAX_ROWS][MAX_COLS],struct Car *parked_car);
+
+int main()
+{
+    struct Car parked_car;
+    int parking_slot[MAX_ROWS][MAX_COLS];
+    int input_num;
+
+    do{
+        printf("1. Park a car\n2. Remove a car\n3. Show parking lot\n4. Exit the program");
+        printf("\nChoose one :");
+        scanf("%d",&input_num);
+
+        switch(input_num){
+        case 1:
+            printf("Park a car\n\n");
+            break;
+        case 2:
+            Remove_Car(parking_slot,&parked_car);
+            break;
+        case 3:
+            printf("Show parking lot\n\n");
+            break;
+        case 4:
+            printf("You have parked ur car successfully\n\n");
+            exit(1);
+        }
+    }while(input_num<=4 && input_num>0);
+    
+    return 0;
+}
+
+void Remove_Car(int parking_slot[MAX_ROWS][MAX_COLS],struct Car *parked_car)
+{
+    int x,y;
+
+    printf("Enter the row to remove:");
+    scanf("%d",&x);
+    printf("Enter the column to remove:");
+    scanf("%d",&y);
+   
+    if(parking_slot[x-1][y-1]==0)
+        printf("There is no car to remove!\n");
+    else 
+        printf("Successfully removed!");
+        parked_car->number=0;
+        
+}
