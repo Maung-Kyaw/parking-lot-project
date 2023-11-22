@@ -1,0 +1,29 @@
+#include<stdio.h>
+#define max_row 5
+#define max_col 5
+void show_parking(int parking_slot[max_row][max_col]);
+ 
+int main()
+{
+    int parking_slot[max_row][max_col]={};
+    show_parking(parking_slot);
+
+   return 0;
+}
+void show_parking(int parking_slot[max_row][max_col]){
+    int i,j;
+    for(i=0;i<max_row;i++){
+        for(j=0;j<max_col;j++){
+            if(parking_slot[i][j]==0){
+                printf("\033[0;32m"); //green shows the available slots
+                printf("%5s","*");
+            }
+            else{
+                printf("\033[0;31m");
+                printf("%5s","*");
+            }
+        }
+    printf("\n");
+    }
+    
+}
