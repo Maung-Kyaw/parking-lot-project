@@ -71,18 +71,24 @@ void Park_Car(struct Car *parked_car, int parking_slot[MAX_ROWS][MAX_COLS]) {
 }
 void Remove_Car(int parking_slot[MAX_ROWS][MAX_COLS],struct Car *parked_car)
 {
-    int x,y;
-
-    printf("Enter the row to remove:");
-    scanf("%d",&x);
-    printf("Enter the column to remove:");
-    scanf("%d",&y);
-
-    if(parking_slot[x-1][y-1]==0)
-        printf("There is no car to remove!\n");
-    else
-        printf("Successfully removed! Car number is %d\n\n",parking_slot[x-1][y-1]);
-        parking_slot[x-1][y-1]=0;
+    int i,j;
+    int x=0;
+        do{
+            printf("Enter the car number to remove: ");
+            scanf("%d",&parked_car->number);
+        
+            for(i=0;i<MAX_ROWS;i++){
+                for(j=0;j<MAX_COLS;j++){
+                    if(parked_car->number==parking_slot[i][j]){
+                        parking_slot[i][j]=0;
+                        x=1;
+                        printf("Your row is %d and column is %d. Successfully removed!",i+1,j+1);
+                }
+            }
+            printf("\n");
+            }
+            if(x!=1) printf("Cannot find this car number in the parking!\n\n");
+        }while(x!=1);
 
 }
 void show_parking(int parking_slot[MAX_ROWS][MAX_COLS]){
