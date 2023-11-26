@@ -169,18 +169,26 @@ void show_parking(int parking_slot[MAX_ROWS][MAX_COLS]){
 void show_ParkedCar_Information(int parking_slot[MAX_ROWS][MAX_COLS]){
     int i,j;
     int x=0;
-
     for(i=0;i<MAX_ROWS;i++){
         for(j=0;j<MAX_COLS;j++){
-            if(parking_slot[i][j]!=0){
-                printf("Parking Slot [%d][%d] : %5d\n\n",i+1,j+1,parking_slot[i][j]);
-                int x=1;
-            }
+        if(parking_slot[i][j]!=0)
+            x=1;
         }
     }
-    if(x==0){
-        printf("\033[1;31mThere is no car parked!\033[0m\n\n");
+    if (x==1){
+        printf("List of parked cars:\n\n");
+        printf("%15s %5s %5s\n", "Car Number", "Row", "Col");
+        
+        for (i=0;i<MAX_ROWS;i++) {
+            for (j=0;j<MAX_COLS;j++) {
+                if (parking_slot[i][j]!=0) {
+                    printf("%15d %5d %5d\n", parking_slot[i][j],i+1,j+1);
+                }
+            }
+        }
+        printf("\n");
     }
+    if(x==0) printf("\033[1;31mThere is no car parked yet!\033[0m\n\n");
 }
 
 
