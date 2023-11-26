@@ -13,7 +13,7 @@ struct Car {
 void Park_Car(struct Car *parked_car, int parking_slot[MAX_ROWS][MAX_COLS]);
 void Remove_Car(int parking_slot[MAX_ROWS][MAX_COLS],struct Car *parked_car);
 void show_parking(int parking_slot[MAX_ROWS][MAX_COLS]);
-void show_parkedcar(struct Car *parked_car, int parking_slot[MAX_ROWS][MAX_COLS]);
+void show_parkedcar(int parking_slot[MAX_ROWS][MAX_COLS]);
 
 int main() {
     struct Car parked_car;
@@ -36,7 +36,7 @@ int main() {
                 show_parking(parking_slot);
                 break;
             case 4:
-                show_parkedcar(&parked_car,parking_slot);
+                show_parkedcar(parking_slot);
                 break;
             case 5:
                 printf("Thank you for using the parking!\n");
@@ -108,7 +108,7 @@ void show_parking(int parking_slot[MAX_ROWS][MAX_COLS]){
     printf("\n");
     }
 }
-void show_parkedcar(struct Car *parked_car, int parking_slot[MAX_ROWS][MAX_COLS]){
+void show_parkedcar(int parking_slot[MAX_ROWS][MAX_COLS]){
     int i,j;
     int x=0;
     for(i=0;i<MAX_ROWS;i++){
